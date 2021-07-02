@@ -1,21 +1,20 @@
-/* Color Pallete */
-
 :root {
   --color-primary: #2584ff;
   --color-secondary: #00d9ff;
   --color-accent: #ff3400;
-  --color-heading: #1b0760;
+  --color-headings: #1b0760;
   --color-body: #918ca4;
 }
 
 /* Typography */
 
 html {
+  /* 62.5% of 16px = 10px */
   font-size: 62.5%;
 }
 
 body {
-  font-family: inter, Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 2.4rem;
   line-height: 1.5;
   color: var(--color-body);
@@ -24,7 +23,7 @@ body {
 h1,
 h2,
 h3 {
-  color: var(--color-heading);
+  color: var(--color-headings);
   margin-bottom: 1rem;
 }
 
@@ -63,16 +62,25 @@ p {
 }
 
 /* Links */
-
 a {
   text-decoration: none;
 }
 
 .link-arrow {
-  font-size: 2rem;
-  text-transform: uppercase;
-  font-weight: bold;
   color: var(--color-accent);
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.link-arrow::after {
+  content: "-->";
+  margin-left: 5px;
+  transition: margin 0.15s;
+}
+
+.link-arrow:hover::after {
+  margin-left: 10px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -80,33 +88,24 @@ a {
     font-size: 1.5rem;
   }
 }
-.link-arrow::after {
-  content: "-->";
-  margin-left: 5px;
-  transition: 0.15s;
-}
-
-.link-arrow:hover::after {
-  margin-left: 10px;
-}
-
 /* Badges */
 
 .badge {
   border-radius: 20px;
-  padding: 0.5rem 2rem;
-  font-weight: 600;
-  white-space: nowrap;
-  color: #fff;
   font-size: 2rem;
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+  white-space: nowrap;
 }
 
 .badge--primary {
-  background-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
 }
 
 .badge--secondary {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
+  color: #fff;
 }
 
 .badge--small {
@@ -122,71 +121,49 @@ a {
     font-size: 1.2rem;
   }
 }
-
 /* Lists */
-
 .list {
   list-style: none;
   padding-left: 0;
-  color: var(--color-heading);
+  color: var(--color-headings);
 }
 
-.list--inline .list__items {
-  font-weight: 600;
+.list--inline .list__item {
   display: inline-block;
   margin-right: 2rem;
-  font-size: 2rem;
 }
 
 .list--tick {
-  list-style-image: url(/Images/tick.svg);
+  list-style-image: url(../images/tick.svg);
   padding-left: 3rem;
-  font-size: 2.4rem;
-  font-weight: 500;
 }
 
-.list--tick .list__items {
+.list--tick .list__item {
   padding-left: 0.5rem;
   margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 1024px) {
-  .list--tick {
-    font-size: 1.8rem;
-  }
-
-  .list--tick .list__items {
+  .list--tick .list__item {
     padding-left: 0;
   }
 }
-
 /* Icons */
-
-.icon-container {
-  background-color: #f3f9fa;
-  height: 64px;
-  width: 64px;
-  border-radius: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 1rem;
-}
-
 .icon {
-  height: 40px;
   width: 40px;
+  height: 40px;
 }
 
 .icon--primary {
   fill: var(--color-primary);
 }
 
-.btn {
-  background-color: var(--color-accent);
-  text-transform: uppercase;
-  display: inline-block;
-  color: #fff;
-  padding: 25px 40px;
-  border-radius: 40px;
+.icon-container {
+  background: #f3f9fa;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
