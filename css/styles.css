@@ -15,6 +15,7 @@
   --color-body-dark: #5c5577;
   --color-border: #ccc;
   --border-radius: 30px;
+  --border-color: #222;
 }
 
 /* Containers */
@@ -76,6 +77,10 @@ p {
   h3 {
     font-size: 2.4rem;
   }
+}
+
+.inline-heading {
+  display: inline-block;
 }
 
 /* Links */
@@ -145,7 +150,10 @@ a {
 .list {
   list-style: none;
   padding-left: 0;
-  color: var(--color-heading);
+}
+
+.list__items {
+  padding: 1rem 0;
 }
 
 .list--inline .list__items {
@@ -160,6 +168,7 @@ a {
   padding-left: 3rem;
   font-size: 2.4rem;
   font-weight: 500;
+  color: var(--color-heading);
 }
 
 .list--tick .list__items {
@@ -211,12 +220,17 @@ a {
 .icon-container--accent {
   background-color: var(--color-accent);
 }
+
+.icon--inline {
+  display: inline-block;
+}
+
 /* Buttons */
 
 .btn {
   font-size: 1.8rem;
   font-weight: 600;
-  padding: 2rem 3rem;
+  padding: 2rem 4vw;
   border: 0;
   border-radius: 40px;
   text-align: center;
@@ -309,7 +323,6 @@ a {
 
 ::placeholder {
   color: #cdcbd7;
-  background-color: 0;
 }
 
 .input-group {
@@ -322,6 +335,7 @@ a {
   border: 0;
   flex-grow: 1;
   padding: 1.5rem 2rem;
+  width: 0;
 }
 
 .input-group .btn {
@@ -583,6 +597,8 @@ a {
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-width: 100rem;
+  margin: 0 auto;
 }
 
 .callout--primary {
@@ -679,17 +695,18 @@ a {
 
 .block--skewed-right {
   padding-bottom: calc(var(--padding-vertical) + 4rem);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 90%);
 }
 
 .block--skewed-left {
   padding-bottom: calc(var(--padding-vertical) + 4rem);
-  clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
 }
 
 /* Navigation Bar  */
 
 .nav {
+  background-color: #000;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -706,7 +723,7 @@ a {
 
 .nav__items {
   padding: 1rem 2rem;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .nav__items > a {
@@ -785,13 +802,14 @@ a {
 
 .block_domain__prices {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 6rem);
   justify-items: center;
   font-weight: bold;
   font-size: 2rem;
   max-width: 850px;
   margin: 0 auto;
+  color: var(--color-heading);
 }
 
 .box-shadow {
@@ -799,6 +817,12 @@ a {
   border: 0;
   margin: 4rem auto;
   max-width: 700px;
+}
+
+@media screen and (min-width: 460px) {
+  .block_domain__prices {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media screen and (min-width: 868px) {
@@ -839,5 +863,97 @@ a {
 @media screen and (min-width: 768px) {
   .feature:nth-of-type(even) .feature__content {
     order: 2;
+  }
+}
+
+/* Showcase Block */
+
+.block--showcase .block__heading {
+  text-align: center;
+}
+
+.showcase__items {
+  align-items: center;
+}
+
+.showcase__image > img {
+  width: 100%;
+}
+
+.showcase__heading {
+  font-size: 2.4rem;
+}
+
+.showcase__content {
+  font-size: 2rem;
+}
+
+.showcase__items {
+  padding-bottom: 10rem;
+}
+
+@media screen and (min-width: 768px) {
+  .block--showcase .grid {
+    grid-template-columns: 50% 50%;
+  }
+
+  .showcase__items {
+    padding-bottom: 0rem;
+  }
+
+  .showcase__image {
+    justify-self: end;
+  }
+  .showcase__image > img {
+    width: auto;
+    max-width: 700px;
+  }
+}
+
+/* Footer */
+.footer {
+  background-color: #232323;
+}
+
+.footer__grid-items {
+  padding: 3rem 2rem;
+  border-bottom: 1px solid #393939;
+}
+
+.footer__logo {
+  width: 100%;
+  max-width: 210px;
+}
+
+.footer__logo-sect {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .footer .block__heading {
+    font-size: 1.6rem;
+  }
+
+  .footer__grid {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+
+  .footer__toggler {
+    display: none;
+  }
+  .footer__grid-items {
+    border: 0;
+  }
+
+  .footer__logo-sect {
+    order: -1;
+  }
+
+  .footer .collapsible__content,
+  .footer p {
+    font-size: 1.5rem;
+    opacity: 1;
+    max-height: 100%;
   }
 }
